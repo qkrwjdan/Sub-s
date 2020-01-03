@@ -9,6 +9,19 @@
 {% block style %}
 {% endblock %}
 <body>
+    <div><a href="/">logo</a></div>
+    
+    <div class = 'menu'>
+        <div> <a href="{% url 'mysubs' %}"> my구독 </a> </div>
+        <div> <a href="{% url 'service_recommend' %}">서비스 추천</a> </div>
+        <div> <a href="{% url 'honey_information' %}">꿀정보</a> </div>
+        <div> <a href="{% url 'magazine' %}">매거진</a> </div>
+        <div> <a href="{% url 'event' %}">이벤트</a> </div>
+        <div> <a href="{% url 'notice' %}">공지사함</a> </div>
+    </div>
+
+    <div class = 'profile'> <a href="{% url 'profile'%}">profile</a> </div>
+    
     <a href="{% url 'login' %}">login</a>
     {% if user.is_authenticated %}
     <a href="{% url 'logout' %}">logout</a>
