@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 {% block content%}
+<center>
 <div>
     enter your login information
 </div>
 <form action="" method = "post">
-    {{form.as_p}}
-    {%csrf_token%}
-    <input type="submit" value='login'>
+        {{form.as_p}}
+        {%csrf_token%}
+        <input type="submit" value='login'>
 </form>
+<div>
+    if you don't have accounts<br>
+</div>
+<div>
+    <a href="{% url 'register' %}">Click here</a>
+</div>
+</center>
 {% endblock%}
