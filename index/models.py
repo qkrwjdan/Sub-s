@@ -21,6 +21,14 @@ class Profile(models.Model):
     age = models.IntegerField(default = 0)
     job = models.CharField(max_length = 30)
 
+    def __str__(self):
+        return self.user.username
+
+class Service(models.Model):
+    service_name = models.CharField(max_length = 30)
+    plan_name = models.CharField(max_length = 30)
+    price = models.IntegerField(default = 0)
+    detail = models.TextField()
 
     def __str__(self):
         return self.service_name + ' - ' + self.plan_name
