@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import UsingPlan
 from django.contrib.auth.models import User
 
@@ -8,6 +8,8 @@ def index(request):
     return render(request,'index.html')
 
 def mysubs(request):
+    if not request.user.is_authenticated :
+        return render(request,'mysubs_notLogin.html')
     #refactoring이 필요하다 object를 가져오는 더 나은 방법이 있을거다.
     us = User.objects.get(username = request.user)
     plan = UsingPlan.objects.filter(user = us)
