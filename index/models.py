@@ -35,6 +35,7 @@ class Service(models.Model):
 
 
 class UsingPlan(models.Model):
+    #이렇게 foreign키로만 단순하게 하는게 맞는걸까??
     user = models.ForeignKey(User,on_delete = models.CASCADE,null = True,default = None)
     service = models.ForeignKey(Service,on_delete = models.CASCADE, null = True,default = None)
 
