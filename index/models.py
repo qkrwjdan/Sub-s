@@ -34,4 +34,7 @@ class Service(models.Model):
         return self.service_name + ' - ' + self.plan_name
 
 
+class UsingPlan(models.Model):
+    user_id = models.OneToOneField(User,on_delete = models.CASCADE)
+    service = models.OneToOneField(Service,on_delete = models.CASCADE)
 
