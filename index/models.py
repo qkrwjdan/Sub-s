@@ -35,6 +35,9 @@ class Service(models.Model):
 
 
 class UsingPlan(models.Model):
-    user_id = models.ForeignKey(User,on_delete = models.CASCADE)
-    service = models.ForeignKey(Service,on_delete = models.CASCADE)
+    user = models.ForeignKey(User,on_delete = models.CASCADE,null = True,default = None)
+    service = models.ForeignKey(Service,on_delete = models.CASCADE, null = True,default = None)
+
+    def __str__(self):
+        return self.user.username + '-' + self.service.service_name
 

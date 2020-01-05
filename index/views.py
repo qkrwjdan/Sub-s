@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import UsingPlan
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -6,7 +8,13 @@ def index(request):
     return render(request,'index.html')
 
 def mysubs(request):
-    return render(request,'mysubs.html')
+    #refactoring이 필요하다 object를 가져오는 더 나은 방법이 있을거다.
+    us = User.objects.get(username = request.user)
+    plan = UsingPlan.objects.filter(user = us)
+
+    return render(request,'mysubs.html',{
+        'us' : us, 'plan' : plan,
+    })
 
 def recommend(request):
     return render(request,'recommend.html')

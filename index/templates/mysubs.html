@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
 {% block content%}
-<h1>Hi Hello</h1>
+<h3>{{us}}</h3>
+{% for p in plan%}
+<h3>{{ p.user }} : {{ p.service }}</h3>
+{% endfor %}
 {% endblock%}
