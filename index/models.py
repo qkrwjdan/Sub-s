@@ -35,6 +35,6 @@ class Service(models.Model):
 
 
 class UsingPlan(models.Model):
-    user_id = models.OneToOneField(User,on_delete = models.CASCADE)
-    service = models.OneToOneField(Service,on_delete = models.CASCADE)
+    user_id = models.ForeignKey(User,on_delete = models.CASCADE)
+    service = models.ForeignKey(Service,on_delete = models.CASCADE)
 
