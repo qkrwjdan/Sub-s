@@ -11,14 +11,14 @@
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'subs/static/subs/style.css' %}">
+  <link rel="stylesheet" href="{% static 'subs/style.css' %}">
 </head>
 {% block style %}
 {% endblock %}
 <body>
     <nav>
           <ul>
-              <la><a href="/"><img src="logo.webp" alt=""> Subs</a></la>
+              <la><a href="/"><img src="{% static 'subs/logo.webp' %}" alt=""> Subs</a></la>
               <li><a href="{% url 'mysubs' %}">My구독</a></li>
               <li><a href="{% url 'service_recommend' %}">서비스추천</a></li>
               <li><a href="{% url 'honey_information' %}">꿀정보</a></li>
