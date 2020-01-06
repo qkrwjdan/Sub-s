@@ -1,0 +1,30 @@
+a{
+   text-decoration:none;
+   color:#000000;
+ }
+
+nav{
+ position : absolute;
+}
+nav ul{
+  padding-top:10px;
+}
+nav ul li {
+   display:inline;
+   font:bold 18px Dotum;
+   font-family: 'Noto Sans KR', sans-serif;
+   padding:0 15px;
+ }
+ nav ul li a:hover{
+   color:#FFBF00;
+ }
+nav ul la a img{
+ width:30px;
+ height:auto;
+}
+nav ul la{
+ display:inline;
+ font:bold 30px Dotum;
+ font-family: 'Noto Sans KR', sans-serif;
+ padding:0 15px;
+}

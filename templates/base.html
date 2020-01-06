@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,23 +7,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Sub-s</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'subs/static/subs/style.css' %}">
 </head>
 {% block style %}
 {% endblock %}
 <body>
-    <div><a href="/">logo</a></div>
-    
-    <div class = 'menu'>
-        <div> <a href="{% url 'mysubs' %}"> my구독 </a> </div>
-        <div> <a href="{% url 'service_recommend' %}">서비스 추천</a> </div>
-        <div> <a href="{% url 'honey_information' %}">꿀정보</a> </div>
-        <div> <a href="{% url 'magazine' %}">매거진</a> </div>
-        <div> <a href="{% url 'event' %}">이벤트</a> </div>
-        <div> <a href="{% url 'notice' %}">공지사함</a> </div>
-    </div>
+    <nav>
+          <ul>
+              <la><a href="/"><img src="logo.webp" alt=""> Subs</a></la>
+              <li><a href="{% url 'mysubs' %}">My구독</a></li>
+              <li><a href="{% url 'service_recommend' %}">서비스추천</a></li>
+              <li><a href="{% url 'honey_information' %}">꿀정보</a></li>
+              <li><a href="{% url 'magazine' %}">매거진</a></li>
+              <li><a href="% url 'event' %}">이벤트</a></li>
+              <li><a href="{% url 'notice' %}">공지사항</a></li>
+          </ul>
+      </nav>
 
     <div class = 'profile'> <a href="{% url 'profile'%}">profile</a> </div>
-    
+
     {% if user.is_authenticated %}
       <a href="{% url 'profile' %}">{{user.username}}</a>
       <a href="{% url 'logout' %}">logout</a>
