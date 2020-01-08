@@ -23,15 +23,12 @@ def mysubs(request):
 def mysubsAdd(request):
     if request.method == 'POST':
         searchF = SearchForm(request.POST)
-        print(request.POST['word'])
         if searchF.is_valid():
             word = request.POST['word']
             obj = Service.objects.filter(service_name__contains = word)
             return render(request,'mysubs_add.html',{
                 'obj' : obj , 'form' : searchF
             })
-        else:
-            return render(request,'event.html')
     else:
         searchF = SearchForm()
         return render(request,'mysubs_add.html',{
