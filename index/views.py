@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
-from .models import UsingPlan
+from .models import UsingPlan,Service
+from .forms import SearchForm
 from django.contrib.auth.models import User
+
 
 # Create your views here.
 
@@ -17,6 +19,28 @@ def mysubs(request):
     return render(request,'mysubs.html',{
         'us' : us, 'plan' : plan,
     })
+
+def mysubsAdd(request):
+    if request.method == 'POST':
+        searchF = SearchForm(request.POST)
+        print(request.POST['word'])
+        if searchF.is_valid():
+            word = request.POST['word']
+            obj = Service.objects.filter(service_name__contains = word)
+            return render(request,'mysubs_add.html',{
+                'obj' : obj , 'form' : searchF
+            })
+        else:
+            return render(request,'event.html')
+    else:
+        searchF = SearchForm()
+        return render(request,'mysubs_add.html',{
+            'form' : searchF,
+        })
+        
+    
+
+    return render(request,'mysubs_add.html')
 
 def recommend(request):
     return render(request,'recommend.html')

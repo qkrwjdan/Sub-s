@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+    <form action="" method="post">    
+        {% csrf_token %}        
+        {{ form.as_p }}        
+        <input type="submit" value="Submit">
+    </form>
+    {% if obj %}
+        {% for i in obj%}
+            <h1>{{i}}</h1>
+        {% endfor %}
+    {% else %}
+        <h1>no data</h1>
+    {% endif %}
+
+
+</center>
+
+{% endblock %}
+
