@@ -11,5 +11,6 @@ urlpatterns = [
     path('event',event,name='event'),
     path('notice',notice,name='notice'),
     path('profile',profile,name='profile'),
+    path('test',searchData,name='test'),
     
 ]
