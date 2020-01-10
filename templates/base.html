@@ -12,9 +12,9 @@
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'subs/style.css' %}">
+  {% block style %}
+  {% endblock %}
 </head>
-{% block style %}
-{% endblock %}
 <body>
     <nav>
           <ul>
@@ -23,7 +23,7 @@
               <li><a href="{% url 'service_recommend' %}">서비스추천</a></li>
               <li><a href="{% url 'honey_information' %}">꿀정보</a></li>
               <li><a href="{% url 'magazine' %}">매거진</a></li>
-              <li><a href="% url 'event' %}">이벤트</a></li>
+              <li><a href="{% url 'event' %}">이벤트</a></li>
               <li><a href="{% url 'notice' %}">공지사항</a></li>
           </ul>
       </nav>
