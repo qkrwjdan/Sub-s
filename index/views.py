@@ -57,7 +57,7 @@ def getSearchResults(findthis):
         data.append({'result' : response_data})
     return data    
 
-@csrf_exempt
+# @csrf_exempt
 def searchData(request):
     if request.method == 'POST':
         print(request.POST['searchwords'])
