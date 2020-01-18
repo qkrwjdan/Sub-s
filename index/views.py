@@ -26,40 +26,6 @@ def mysubs(request):
 
 def mysubsAdd(request):
     if request.method == 'POST':
-        searchF = SearchForm(request.POST)
-        if searchF.is_valid():
-            word = request.POST['word']
-            obj = Service.objects.filter(service_name__contains = word)
-            return render(request,'mysubs_add.html',{
-                'obj' : obj , 'form' : searchF
-            })
-    else:
-        searchF = SearchForm()
-        return render(request,'mysubs_add.html',{
-            'form' : searchF,
-        })
-        
-    
-
-    return render(request,'mysubs_add.html')
-
-def getSearchResults(findthis):
-    """
-    findthis(str)을 받아서
-    DB 에서 
-    data(list)를 반환해줌
-    """
-    # obj 는 DB에서 찾은 query들의 리스트 객체
-    obj = Service.objects.filter(service_name__contains = findthis)
-    data = []
-    for i in obj:
-        response_data = i.service_name #str 
-        data.append({'result' : response_data})
-    return data    
-
-# @csrf_exempt
-def searchData(request):
-    if request.method == 'POST':
         print(request.POST['searchwords'])
         # if 'searchwords' in request.POST:
         #     # findthis = 찾고자 하는 문자열
@@ -74,7 +40,22 @@ def searchData(request):
         print(json)
         return HttpResponse(json)
     else:
-        return render(request,'test.html')
+        return render(request,'mysubs_add.html')
+
+
+def getSearchResults(findthis):
+    """
+    findthis(str)을 받아서
+    DB 에서 
+    data(list)를 반환해줌
+    """
+    # obj 는 DB에서 찾은 query들의 리스트 객체
+    obj = Service.objects.filter(service_name__contains = findthis)
+    data = []
+    for i in obj:
+        response_data = i.service_name #str 
+        data.append({'result' : response_data})
+    return data   
 
 def recommend(request):
     return render(request,'recommend.html')
