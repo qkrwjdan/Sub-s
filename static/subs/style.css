@@ -4,27 +4,45 @@ a{
  }
 
 nav{
- position : absolute;
 }
 nav ul{
   padding-top:10px;
 }
 nav ul li {
-   display:inline;
-   font:bold 18px Dotum;
-   font-family: 'Noto Sans KR', sans-serif;
-   padding:0 15px;
+
+  display: inline;
+   font: 16px Dotum;
+   font-family: 'Jua', sans-serif;
+   padding:0 23px;
+ }
+ nav ul li a{
+
+     table-layout: fixed;
  }
  nav ul li a:hover{
+
    color:#FFBF00;
+   text-decoration:none;
  }
 nav ul la a img{
  width:30px;
  height:auto;
+
 }
 nav ul la{
- display:inline;
- font:bold 30px Dotum;
- font-family: 'Noto Sans KR', sans-serif;
- padding:0 15px;
+
+ font: 28px Dotum;
+ padding:0 25px;
+ font-family: 'Alfa Slab One', sans-serif;
+}
+
+nav ul la a:hover{
+
+  color:#585858;
+  text-decoration:none;
+}
+
+.profile a:hover\
+]]\{
+  text-decoration: none;\
 }
