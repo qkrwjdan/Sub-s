@@ -28,18 +28,21 @@
               <li><a href="{% url 'magazine' %}">매거진</a></li>
               <li><a href="{% url 'event' %}">이벤트</a></li>
               <li><a href="{% url 'notice' %}">공지사항</a></li>
-              <li style = "background-color:white; height:50px;"><a href="#" ><img src="{% static 'subs/search.png' %}" style = "width:25px;"></a></li>
+
+              <div style = "display:inline; float:right; padding-right:40px; padding-top:20px;"><a href="{% url 'profile'%}" ><img src="{% static 'subs/profile.png' %}" style = "width:35px;"></a></div>
+              <div style = "display:inline; float:right; padding-right:40px;padding-top:20px;"><a href="#" ><img src="{% static 'subs/notification.png' %}" style = "width:35px;"></a></div>
+              <div style = "display:inline; float:right; padding-right:40px;padding-top:20px;"><a href="#" ><img src="{% static 'subs/search.png' %}" style = "width:35px;"></a></div>
           </ul>
       </nav>
 
-    <div class = "profile"> <a href="{% url 'profile'%}">profile</a> </div>
-
+  <!--
     {% if user.is_authenticated %}
       <a href="{% url 'profile' %}" >{{user.username}}</a>
       <a href="{% url 'logout' %}">logout</a>
     {% else %}
     <a href="{% url 'login' %}">login</a>
     {% endif %}
+  -->
 
     {%block content%}
     {% endblock %}

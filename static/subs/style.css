@@ -14,8 +14,10 @@ nav ul li {
    font: 16px Dotum;
    font-family: 'Nanum Gothic', sans-serif;
    color: #F2F2F2;
-   padding:0 23px;
+   padding:0 30px;
  }
+
+
  nav ul li a{
 
      table-layout: fixed;
