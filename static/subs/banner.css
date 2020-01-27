@@ -20,10 +20,12 @@
     height: 500px;
     margin: 0 auto;
     background-color: aqua;
-    position: relative;
+    position: absolute;
     overflow: hidden;
-
     border-radius: 20px;
+
+    top : 200px;
+    left : 30px;
   }
 
   .slider .panel {
