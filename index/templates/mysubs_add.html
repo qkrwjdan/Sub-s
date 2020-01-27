@@ -46,7 +46,7 @@ function searchajax(){
         if( words != ''){
             $.ajax({
                 type: 'POST',
-                url: '/test',
+                url: '/mysubs/add',
                 data: { searchwords : words},
                 dataType: 'json',
                 success: function(result){
@@ -69,12 +69,15 @@ function searchajax(){
 {% endblock %}
 
 {% block content%}
-<div id="search" class="tab_content">
-<form action="" method = 'post'>
-    {% csrf_token %} 
-    <input type="text" id="searchword" style="width:300px;"/>
-</form>
-    
-</div>
-<div id="results"></div> 
+<center>
+    <div id="search" class="tab_content">
+        <form action="" method = 'post'>
+            {% csrf_token %} 
+            <input type="text" id="searchword" style="width:300px;"/>
+        </form>
+    </div>
+
+    <div id="results"></div> 
+</center>
+
 {% endblock %}

@@ -26,7 +26,6 @@ def mysubs(request):
 
 def mysubsAdd(request):
     if request.method == 'POST':
-        print(request.POST['searchwords'])
         # if 'searchwords' in request.POST:
         #     # findthis = 찾고자 하는 문자열
         #     findthis = request.POST['searchwords']
@@ -37,7 +36,6 @@ def mysubsAdd(request):
         #dumps = 딕셔너리 객체를 json문자열로 변환한다.
         #contents 는 dictionary 타입인가?
         json = dumps(contents)
-        print(json)
         return HttpResponse(json)
     else:
         return render(request,'mysubs_add.html')
