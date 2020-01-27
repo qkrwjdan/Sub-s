@@ -1,6 +1,86 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+{% block style %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static 'subs/banner.css' %}">
+<script>
+$(document).ready(function() {
+//좌우버튼, 동그라미 버튼 연동 //
+
+    var wid = $(".slider").width();
+    var i = $(".btn li.on").index();
+    var len = $(".panel li").length;
+
+    $(".prev").click(function() {
+
+
+    if (i == 0) {
+
+        i = len - 1;
+
+
+    } else {
+
+        i = i - 1;
+
+    }
+
+    showSlide();
+    });
+
+    $(".next").click(function() {
+
+    if (i == 3) {
+
+        i = 0;
+
+
+    } else {
+
+        i = i + 1;
+
+    }
+    showSlide();
+    });
+
+    $(".btn li").click(function() {
+
+    i = $(this).index();
+
+    showSlide();
+
+
+    });
+
+    function showSlide() {
+    $(".btn li").removeClass("on");
+    $(".btn li").eq(i).addClass("on");
+    $(".panel li").stop(true, true).fadeOut();
+    $(".panel li").eq(i).stop(true, true).fadeIn();
+    }
+
+
+});
+</script>
+{% endblock %}
+
 {% block content%}
-<h1>Hi Hello</h1>
+<div class="slider">
+    <ul class="panel">
+      <li>슬라이더1</li>
+      <li>슬라이더2</li>
+      <li>슬라이더3</li>
+      <li>슬라이더4</li>
+    </ul>
+    <ul class="btn">
+      <li class="on">버튼1</li>
+      <li>버튼2</li>
+      <li>버튼3</li>
+      <li>버튼4</li>
+    </ul>
+    <button class="prev">좌</button>
+    <button class="next">우</button>
+  </div>
 {% endblock%}
+
