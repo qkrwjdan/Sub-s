@@ -23,7 +23,7 @@ nav ul li {
      table-layout: fixed;
  }
  nav ul li a:hover{
-
+    -webkit-transition: color 0.2s;
    color:#FFBF00;
    text-decoration:none;
  }
