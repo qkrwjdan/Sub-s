@@ -42,7 +42,7 @@ nav ul la{
 }
 
 nav ul la a:hover{
-
+  -webkit-transition:color 0.2s;
   color:#585858;
   text-decoration:none;
 }

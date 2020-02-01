@@ -87,18 +87,6 @@
     margin-right: 6px;
     cursor: pointer;
   }
-  #la {
-    display:inline-block;
-
-    width: 7px;
-    height: 7px;
-    float:right;
-    background-color: white;
-    opacity:0.8;
-    text-indent: -9999px;
-    cursor: pointer;
-  }
-
   .btn .on {
     background-color: white;
     width:10px;
@@ -142,4 +130,24 @@
    border: none;
 
    color: #FFFFFF;
+  }
+
+  .btn2 {
+    position: absolute;
+    bottom: 30px;
+    float:right;
+    margin-right: 18px;
+
+  }
+
+  .btn2 li {
+    display:inline-block;
+
+    width: 7px;
+    height: 7px;
+    float:right;
+    background-color: white;
+    opacity:0.8;
+    margin-right: 6px;
+    cursor: pointer;
   }
