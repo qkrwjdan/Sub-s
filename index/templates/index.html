@@ -68,10 +68,10 @@ $(document).ready(function() {
 {% block content%}
 <div class="slider">
     <ul class="panel">
-      <li>슬라이더1</li>
-      <li>슬라이더2</li>
-      <li>슬라이더3</li>
-      <li>슬라이더4</li>
+      <li><a href=""><img style= " width:110%; margin-left:-10px; margin-top:-3px" src="{% static 'subs/MainBanner_1.png' %}" alt=""></a></li>
+      <li></li>
+      <li></li>
+      <li></li>
     </ul>
     <ul class="btn">
       <li class="on">버튼1</li>
@@ -79,8 +79,7 @@ $(document).ready(function() {
       <li>버튼3</li>
       <li>버튼4</li>
     </ul>
-    <button class="prev">좌</button>
-    <button class="next">우</button>
+    <button class="prev"><img src="{% static 'subs/left.png' %}" style = "width:10px;"></button>
+    <button class="next"><img src="{% static 'subs/right.png' %}" style = "width:10px;"></button>
   </div>
 {% endblock%}
-

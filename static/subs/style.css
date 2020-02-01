@@ -30,7 +30,7 @@ nav ul li {
 nav ul la a img{
  width:30px;
  height:auto;
- margin-top:10px;
+ padding-top:20px;
 }
 nav ul la{
 
@@ -49,6 +49,10 @@ nav ul la a:hover{
 
 body {
   background-color : #F2F2F2;
+}
+
+div .banner{
+
 }
 
 .profile a:hover\
