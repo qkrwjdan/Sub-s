@@ -11,6 +11,21 @@ from json import dumps,loads
 # Create your views here.
 
 def index(request):
+    if request.user.is_authenticated:
+        svc = []
+        # 사용자가 사용하고 있는 요금제 정보 : plan
+        plan = UsingPlan.objects.filter(user = request.user)
+        for i in plan:
+            data = Service.objects.get(
+                service_name = i.service.service_name,
+                plan_name = i.service.plan_name
+            )
+            svc.append(data)
+        
+        data_list = list(enumerate(svc))
+        return render(request,'index.html',{
+            "data" : data_list,
+        })
     return render(request,'index.html')
 
 def mysubs(request):

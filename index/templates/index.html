@@ -83,4 +83,7 @@ $(document).ready(function() {
     <button class="prev"><img src="{% static 'subs/left.png' %}" style = "width:10px;"></button>
     <button class="next"><img src="{% static 'subs/right.png' %}" style = "width:10px;"></button>
   </div>
+  {% for idx, val in data %}
+    <div style = "position : absolute; left : 300px; top : 2{{idx}}0px"> {{ val }}  :  {{val.price}}</div>
+  {% endfor %}
 {% endblock%}
