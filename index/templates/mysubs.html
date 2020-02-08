@@ -1,10 +1,92 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'subs/mysubs.css' %}">
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    searchajax();
+});
+</script>
+
+<script type="text/javascript">
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+        var cookie = jQuery.trim(cookies[i]);
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function csrfSafeMethod(method) {
+                // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+              }
+              $(document).ready(function() {
+                var csrftoken = getCookie('csrftoken');
+                $.ajaxSetup({
+                  beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                      xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                  }
+                });
+              });
+
+function searchajax(){
+    $("#searchword").keyup(function(){
+        var words = $("#searchword").val();
+        if( words != ''){
+            $.ajax({
+                type: 'POST',
+                url: '/mysubs',
+                data: { searchwords : words},
+                dataType: 'json',
+                success: function(result){
+                    if ( result.length > 0){
+                        var str = ''
+                        for (var i=0; i<result.length; i++){
+                            str += '<span>'+ result[i].result + '</span><br/>';
+                        }
+                        //html의 result필드에 넣어주는 작업
+                        $("#results").html(str);
+                    } else{ $("#results").html(""); }
+                },
+                error: function(e) {console.log('error:' + e.status);}
+            });
+        } else{ $("#results").html(""); }
+    });
+}                                                                   
+
+</script>
+{% endblock %}
+
 {% block content%}
 <h3 style = "position : absolute; top : 76px; left : 50px;">{{us}}</h3>
-{% for p in plan%}
-<h3 style= "position:absolute; top :{{p.id}}00px; left : 150px; margin-left:-10px; margin-top:-3px">{{ p.user }} : {{ p.service }}</h3>
 
-{% endfor %}
-<div><a href="{% url 'mysubs_add' %}" style="position: absolute; top : 600px; left : 50px;">추가하기</a></div>
+<div><a href="{% url 'mysubs_add' %}" style="position: absolute; top : 600px; left : 50px; z-index:3;">추가하기</a></div>
+<div class = "box" style = "height : 600px; width : 400px; position:absolute; left : 30px; z-index:2;">
+    <div id="subject" style ="position : relative;left : 140px;font-size : 36px;height: 40px; text-align : center; width: 120px;" >My 구독</div>
+    {% for p in plan %}
+        <h3 class="usingPlan" style= "position:absolute; top :2{{p.id}}0px; left : 150px; margin-left:-10px; margin-top:-3px;z-index : 3;">{{ p.user }} : {{ p.service }}</h3>
+    {% endfor %}
+</div>
+
+<div class ="searchBox" style="position : absolute; left : 500px;">
+    <img src="{% static 'subs/testSearch.png'%}" style = "z-index : 1; position : relative;" alt="">
+    <input type="text" id="searchword" style = "height : 30px; width : 400px; top : 40px; right : 250px; background-color: #f2f2f2;color : black; position :absolute; z-index : 3;border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;">
+</div>
+
+<div id="results" style="position: absolute; top:220px; left : 500px;"> </div>
+
 
 {% endblock%}

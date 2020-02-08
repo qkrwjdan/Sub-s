@@ -22,7 +22,7 @@ def index(request):
             )
             svc.append(data)
         
-        data_list = list(enumerate(svc))
+        data_list = svc
         return render(request,'index.html',{
             "data" : data_list,
         })
@@ -31,13 +31,26 @@ def index(request):
 def mysubs(request):
     if not request.user.is_authenticated :
         return render(request,'mysubs_notLogin.html')
-    #refactoring이 필요하다 object를 가져오는 더 나은 방법이 있을거다.
-    us = User.objects.get(username = request.user)
-    plan = UsingPlan.objects.filter(user = us)
 
-    return render(request,'mysubs.html',{
-        'us' : us, 'plan' : plan,
-    })
+    if request.method == 'POST':
+        # if 'searchwords' in request.POST:
+        #     # findthis = 찾고자 하는 문자열
+        #     findthis = request.POST['searchwords']
+        findthis = request.POST['searchwords']
+        contents = []
+        # getSearchResults() 메소드 구현 필요
+        contents = getSearchResults(findthis)
+        #dumps = 딕셔너리 객체를 json문자열로 변환한다.
+        #contents 는 dictionary 타입인가?
+        json = dumps(contents)
+        return HttpResponse(json)
+    else:
+        #refactoring이 필요하다 object를 가져오는 더 나은 방법이 있을거다.
+        us = User.objects.get(username = request.user)
+        plan = UsingPlan.objects.filter(user = us)
+        return render(request,'mysubs.html',{
+            'us' : us, 'plan' : plan,
+        })
 
 def mysubsAdd(request):
     if request.method == 'POST':

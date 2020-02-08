@@ -1,0 +1,19 @@
+.box{
+    font-family: 'Apple SD Gothic Neo',arial,sans-serif;
+    color: #222;
+    font-size: small;
+    background: #fff;
+    display: flex;
+    border: 1px solid #dfe1e5;
+    box-shadow: none;
+    border-radius: 24px;
+    z-index: 1;
+    height: 344px;
+    margin: 0 auto;
+    width: 482px;
+};
+
+.usingPlan{
+    z-index : 3;
+};
+

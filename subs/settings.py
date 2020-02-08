@@ -124,4 +124,5 @@ STATICFILES_DIRS = (
     '/static/',    # garden App의 static 파일
 )
 
+
 LOGIN_REDIRECT_URL = '/'
