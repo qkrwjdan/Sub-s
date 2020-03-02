@@ -20,7 +20,7 @@
     width: 230px;
     height: 550px;
     margin: 0 auto;
-    margin-left: 20px;
+    margin-left: 30px;
     background-color: aqua;
     position: absolute;
     overflow: hidden;
@@ -28,6 +28,21 @@
 
     top : 140px;
     left : 40px;
+  }
+
+  .slider2 {
+    display: inline-block;
+    width: 230px;
+    height: 550px;
+    margin: 0 auto;
+    margin-left: 50px;
+    background-color: aqua;
+    position: absolute;
+    overflow: hidden;
+    border-radius: 25px;
+
+    top : 140px;
+    left : 310px;
   }
 
   .slider .panel {
@@ -89,6 +104,7 @@
   }
   .btn .on {
     background-color: white;
+
     width:10px;
     height:10px;
   }
