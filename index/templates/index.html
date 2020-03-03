@@ -83,6 +83,7 @@ $(document).ready(function() {
     <button class="prev"><img src="{% static 'subs/left.png' %}" style = "width:10px;"></button>
     <button class="next"><img src="{% static 'subs/right.png' %}" style = "width:10px;"></button>
   </div>
+<<<<<<< HEAD
 
   <div class="slider2">
       <ul class="panel">
@@ -103,4 +104,9 @@ $(document).ready(function() {
     </div>
 
 
+=======
+  {% for val in data %}
+    <div style = "position : absolute; left : 300px; top : {{val.id}}00px"> {{ val }}  :  {{val.price}}</div>
+  {% endfor %}
+>>>>>>> b60a1cabc64007cde91e6018178028db63f15da8
 {% endblock%}

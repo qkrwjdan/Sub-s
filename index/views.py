@@ -11,18 +11,46 @@ from json import dumps,loads
 # Create your views here.
 
 def index(request):
+    if request.user.is_authenticated:
+        svc = []
+        # 사용자가 사용하고 있는 요금제 정보 : plan
+        plan = UsingPlan.objects.filter(user = request.user)
+        for i in plan:
+            data = Service.objects.get(
+                service_name = i.service.service_name,
+                plan_name = i.service.plan_name
+            )
+            svc.append(data)
+        
+        data_list = svc
+        return render(request,'index.html',{
+            "data" : data_list,
+        })
     return render(request,'index.html')
 
 def mysubs(request):
     if not request.user.is_authenticated :
         return render(request,'mysubs_notLogin.html')
-    #refactoring이 필요하다 object를 가져오는 더 나은 방법이 있을거다.
-    us = User.objects.get(username = request.user)
-    plan = UsingPlan.objects.filter(user = us)
 
-    return render(request,'mysubs.html',{
-        'us' : us, 'plan' : plan,
-    })
+    if request.method == 'POST':
+        # if 'searchwords' in request.POST:
+        #     # findthis = 찾고자 하는 문자열
+        #     findthis = request.POST['searchwords']
+        findthis = request.POST['searchwords']
+        contents = []
+        # getSearchResults() 메소드 구현 필요
+        contents = getSearchResults(findthis)
+        #dumps = 딕셔너리 객체를 json문자열로 변환한다.
+        #contents 는 dictionary 타입인가?
+        json = dumps(contents)
+        return HttpResponse(json)
+    else:
+        #refactoring이 필요하다 object를 가져오는 더 나은 방법이 있을거다.
+        us = User.objects.get(username = request.user)
+        plan = UsingPlan.objects.filter(user = us)
+        return render(request,'mysubs.html',{
+            'us' : us, 'plan' : plan,
+        })
 
 def mysubsAdd(request):
     if request.method == 'POST':
