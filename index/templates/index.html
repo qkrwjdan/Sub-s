@@ -62,13 +62,75 @@ $(document).ready(function() {
 
 
 });
+
+</script>
+
+<script>
+$(document).ready(function() {
+//좌우버튼, 동그라미 버튼 연동 //
+
+    var wid2 = $(".slider2").width();
+    var i2 = $(".btn2 li.on2").index();
+    var len2 = $(".panel2 li").length;
+
+    $(".prev2").click(function() {
+
+
+    if (i2 == 0) {
+
+        i2 = len2 - 1;
+
+
+    } else {
+
+        i2 = i2 - 1;
+
+    }
+
+    showSlide();
+    });
+
+    $(".next2").click(function() {
+
+    if (i2 == 3) {
+
+        i2 = 0;
+
+
+    } else {
+
+        i2 = i2 + 1;
+
+    }
+    showSlide();
+    });
+
+    $(".btn2 li").click(function() {
+
+    i2 = $(this).index();
+
+    showSlide();
+
+
+    });
+
+    function showSlide() {
+    $(".btn2 li").removeClass("on");
+    $(".btn2 li").eq(i).addClass("on");
+    $(".panel2 li").stop(true, true).fadeOut();
+    $(".panel2 li").eq(i).stop(true, true).fadeIn();
+    }
+
+
+});
+
 </script>
 {% endblock %}
 
 {% block content%}
 <div class="slider">
     <ul class="panel">
-      <li><a href=""><img style= " width:110%; margin-left:-10px; margin-top:-3px" src="{% static 'subs/MainBanner_1.png' %}" alt=""></a></li>
+      <li></li>
       <li></li>
       <li></li>
       <li></li>
@@ -83,6 +145,26 @@ $(document).ready(function() {
     <button class="prev"><img src="{% static 'subs/left.png' %}" style = "width:10px;"></button>
     <button class="next"><img src="{% static 'subs/right.png' %}" style = "width:10px;"></button>
   </div>
+
+  <div class="slider2">
+      <ul class="panel2">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <ul class="btn2">
+        <li class="on2">버튼1</li>
+        <li>버튼2</li>
+        <li>버튼3</li>
+        <li>버튼4</li>
+      </ul>
+
+      <button class="prev2"><img src="{% static 'subs/left.png' %}" style = "width:10px;"></button>
+      <button class="next2"><img src="{% static 'subs/right.png' %}" style = "width:10px;"></button>
+    </div>
+
+
 
   <!-- TODO:  -->
 {% endblock%}
